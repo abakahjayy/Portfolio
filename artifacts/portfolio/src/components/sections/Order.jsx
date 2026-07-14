@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
+import { apiUrl } from "@/lib/apiUrl";
 
 const orderSchema = z.object({
   businessName: z.string().optional(),
@@ -32,7 +33,7 @@ export function Order() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}api/order`, {
+      const res = await fetch(apiUrl("/api/order"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

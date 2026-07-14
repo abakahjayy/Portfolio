@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
+import { apiUrl } from "@/lib/apiUrl";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name is required"),
@@ -27,7 +28,7 @@ export function Contact() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}api/contact`, {
+      const res = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
