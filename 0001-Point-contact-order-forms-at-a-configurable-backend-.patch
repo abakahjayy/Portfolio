@@ -1,0 +1,114 @@
+From 46261994763ebaca811a348f0a0912b89b10d342 Mon Sep 17 00:00:00 2001
+From: Claude <assistant@example.com>
+Date: Tue, 14 Jul 2026 06:19:46 +0000
+Subject: [PATCH] Point contact/order forms at a configurable backend URL
+
+- Add src/lib/apiUrl.js helper: uses VITE_API_URL when set, otherwise
+  falls back to Vite's BASE_URL (same-origin relative requests)
+- Update Contact.jsx and Order.jsx to use the helper instead of the
+  BASE_URL-only path
+- Add .env.example documenting VITE_API_URL
+- Ignore local .env files in git (keep .env.example tracked)
+
+Note: an untracked .env with VITE_API_URL=http://localhost:7004 was
+also created locally for dev, but is intentionally not committed.
+---
+ .gitignore                                          |  5 +++++
+ artifacts/portfolio/.env.example                    |  4 ++++
+ .../portfolio/src/components/sections/Contact.jsx   |  3 ++-
+ .../portfolio/src/components/sections/Order.jsx     |  3 ++-
+ artifacts/portfolio/src/lib/apiUrl.js               | 13 +++++++++++++
+ 5 files changed, 26 insertions(+), 2 deletions(-)
+ create mode 100644 artifacts/portfolio/.env.example
+ create mode 100644 artifacts/portfolio/src/lib/apiUrl.js
+
+diff --git a/.gitignore b/.gitignore
+index 12bc7fa..f781911 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,6 +11,11 @@ out-tsc
+ # dependencies
+ node_modules
+ 
++# local environment files
++.env
++.env.local
++!.env.example
++
+ # IDEs and editors
+ /.idea
+ .project
+diff --git a/artifacts/portfolio/.env.example b/artifacts/portfolio/.env.example
+new file mode 100644
+index 0000000..05410ef
+--- /dev/null
++++ b/artifacts/portfolio/.env.example
+@@ -0,0 +1,4 @@
++# URL of the FullBackendd API. Leave unset to fetch relative to the
++# frontend's own origin instead (useful if both are served from the same
++# domain/proxy in production).
++VITE_API_URL=http://localhost:7004
+diff --git a/artifacts/portfolio/src/components/sections/Contact.jsx b/artifacts/portfolio/src/components/sections/Contact.jsx
+index e5d9a95..5be7d3a 100644
+--- a/artifacts/portfolio/src/components/sections/Contact.jsx
++++ b/artifacts/portfolio/src/components/sections/Contact.jsx
+@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
+ import { zodResolver } from "@hookform/resolvers/zod";
+ import * as z from "zod";
+ import { useState } from "react";
++import { apiUrl } from "@/lib/apiUrl";
+ 
+ const formSchema = z.object({
+   fullName: z.string().min(2, "Name is required"),
+@@ -27,7 +28,7 @@ export function Contact() {
+   const onSubmit = async (data) => {
+     setIsSubmitting(true);
+     try {
+-      const res = await fetch(`${import.meta.env.BASE_URL}api/contact`, {
++      const res = await fetch(apiUrl("/api/contact"), {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(data),
+diff --git a/artifacts/portfolio/src/components/sections/Order.jsx b/artifacts/portfolio/src/components/sections/Order.jsx
+index 41f4508..ba557a5 100644
+--- a/artifacts/portfolio/src/components/sections/Order.jsx
++++ b/artifacts/portfolio/src/components/sections/Order.jsx
+@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
+ import { zodResolver } from "@hookform/resolvers/zod";
+ import * as z from "zod";
+ import { useState } from "react";
++import { apiUrl } from "@/lib/apiUrl";
+ 
+ const orderSchema = z.object({
+   businessName: z.string().optional(),
+@@ -32,7 +33,7 @@ export function Order() {
+   const onSubmit = async (data) => {
+     setIsSubmitting(true);
+     try {
+-      const res = await fetch(`${import.meta.env.BASE_URL}api/order`, {
++      const res = await fetch(apiUrl("/api/order"), {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(data),
+diff --git a/artifacts/portfolio/src/lib/apiUrl.js b/artifacts/portfolio/src/lib/apiUrl.js
+new file mode 100644
+index 0000000..29f00a9
+--- /dev/null
++++ b/artifacts/portfolio/src/lib/apiUrl.js
+@@ -0,0 +1,13 @@
++// Builds a URL against the configured backend.
++//
++// If VITE_API_URL is set (e.g. "http://localhost:7004" for local dev, or
++// "https://api.yourdomain.com" in production), requests go straight to that
++// host. Otherwise it falls back to Vite's BASE_URL, which keeps requests
++// relative to whatever origin the frontend itself is served from (useful
++// when the frontend and backend are deployed behind the same domain/proxy).
++export function apiUrl(path) {
++  const base = import.meta.env.VITE_API_URL || import.meta.env.BASE_URL || "/";
++  const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
++  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
++  return `${normalizedBase}${normalizedPath}`;
++}
+-- 
+2.43.0
+

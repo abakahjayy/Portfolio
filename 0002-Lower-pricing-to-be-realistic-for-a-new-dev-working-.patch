@@ -1,0 +1,77 @@
+From 46fe3d31ad7005e4c23d5fa9f927a0b73c5bf835 Mon Sep 17 00:00:00 2001
+From: Claude <assistant@example.com>
+Date: Tue, 14 Jul 2026 06:50:29 +0000
+Subject: [PATCH 2/2] Lower pricing to be realistic for a new dev working in
+ GHS
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- Starter: $999 -> $199 (~GH₵2,290)
+- Professional: $2,499 -> $499 (~GH₵5,740)
+- Enterprise stays Custom
+- Scale Order.jsx budget dropdown and Contact.jsx budget placeholder
+  proportionally so they still bracket the new tiers correctly
+---
+ artifacts/portfolio/src/components/sections/Contact.jsx | 2 +-
+ artifacts/portfolio/src/components/sections/Order.jsx   | 8 ++++----
+ artifacts/portfolio/src/components/sections/Pricing.jsx | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/artifacts/portfolio/src/components/sections/Contact.jsx b/artifacts/portfolio/src/components/sections/Contact.jsx
+index 5be7d3a..7d73bde 100644
+--- a/artifacts/portfolio/src/components/sections/Contact.jsx
++++ b/artifacts/portfolio/src/components/sections/Contact.jsx
+@@ -137,7 +137,7 @@ export function Contact() {
+                   </Box>
+                   <Box>
+                     <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500" color="textBase">Budget</Box>
+-                    <Box as="input" {...register("budget")} placeholder="e.g. $500 - $1000" w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} color="textBase" outline="none" _focus={{ borderColor: "brand.500" }} />
++                    <Box as="input" {...register("budget")} placeholder="e.g. $200 - $500" w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} color="textBase" outline="none" _focus={{ borderColor: "brand.500" }} />
+                   </Box>
+                   <Box>
+                     <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500" color="textBase">Timeline</Box>
+diff --git a/artifacts/portfolio/src/components/sections/Order.jsx b/artifacts/portfolio/src/components/sections/Order.jsx
+index ba557a5..779cc02 100644
+--- a/artifacts/portfolio/src/components/sections/Order.jsx
++++ b/artifacts/portfolio/src/components/sections/Order.jsx
+@@ -121,10 +121,10 @@ export function Order() {
+                 <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500">Estimated Budget</Box>
+                 <Box as="select" {...register("budget")} w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} outline="none" _focus={{ borderColor: "brand.500" }} color="textBase">
+                   <option value="">Select budget range...</option>
+-                  <option value="< $1,000">Less than $1,000</option>
+-                  <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+-                  <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+-                  <option value="$5,000+">$5,000+</option>
++                  <option value="< $200">Less than $200</option>
++                  <option value="$200 - $600">$200 - $600</option>
++                  <option value="$600 - $1,000">$600 - $1,000</option>
++                  <option value="$1,000+">$1,000+</option>
+                 </Box>
+               </Box>
+               <Box>
+diff --git a/artifacts/portfolio/src/components/sections/Pricing.jsx b/artifacts/portfolio/src/components/sections/Pricing.jsx
+index f68ce74..d020bc9 100644
+--- a/artifacts/portfolio/src/components/sections/Pricing.jsx
++++ b/artifacts/portfolio/src/components/sections/Pricing.jsx
+@@ -6,7 +6,7 @@ const plans = [
+   {
+     name: "Starter",
+     description: "Perfect for personal brands and small businesses starting out.",
+-    price: "$999",
++    price: "$199",
+     features: [
+       "Up to 5 Pages",
+       "Responsive Mobile Design",
+@@ -20,7 +20,7 @@ const plans = [
+   {
+     name: "Professional",
+     description: "Ideal for growing businesses needing advanced functionality.",
+-    price: "$2,499",
++    price: "$499",
+     features: [
+       "Up to 15 Pages",
+       "Custom UI/UX Design",
+-- 
+2.43.0
+
