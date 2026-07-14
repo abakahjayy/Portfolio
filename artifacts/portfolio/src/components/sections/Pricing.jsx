@@ -6,7 +6,7 @@ const plans = [
   {
     name: "Starter",
     description: "Perfect for personal brands and small businesses starting out.",
-    price: "$999",
+    price: "$199",
     features: [
       "Up to 5 Pages",
       "Responsive Mobile Design",
@@ -20,7 +20,7 @@ const plans = [
   {
     name: "Professional",
     description: "Ideal for growing businesses needing advanced functionality.",
-    price: "$2,499",
+    price: "$499",
     features: [
       "Up to 15 Pages",
       "Custom UI/UX Design",

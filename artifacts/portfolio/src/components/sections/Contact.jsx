@@ -137,7 +137,7 @@ export function Contact() {
                   </Box>
                   <Box>
                     <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500" color="textBase">Budget</Box>
-                    <Box as="input" {...register("budget")} placeholder="e.g. $500 - $1000" w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} color="textBase" outline="none" _focus={{ borderColor: "brand.500" }} />
+                    <Box as="input" {...register("budget")} placeholder="e.g. $200 - $500" w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} color="textBase" outline="none" _focus={{ borderColor: "brand.500" }} />
                   </Box>
                   <Box>
                     <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500" color="textBase">Timeline</Box>

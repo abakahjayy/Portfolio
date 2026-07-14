@@ -121,10 +121,10 @@ export function Order() {
                 <Box as="label" display="block" mb={2} fontSize="sm" fontWeight="500">Estimated Budget</Box>
                 <Box as="select" {...register("budget")} w="full" bg="background.dark" border="1px solid" borderColor="borderBase" borderRadius="lg" px={4} py={3} outline="none" _focus={{ borderColor: "brand.500" }} color="textBase">
                   <option value="">Select budget range...</option>
-                  <option value="< $1,000">Less than $1,000</option>
-                  <option value="$1,000 - $3,000">$1,000 - $3,000</option>
-                  <option value="$3,000 - $5,000">$3,000 - $5,000</option>
-                  <option value="$5,000+">$5,000+</option>
+                  <option value="< $200">Less than $200</option>
+                  <option value="$200 - $600">$200 - $600</option>
+                  <option value="$600 - $1,000">$600 - $1,000</option>
+                  <option value="$1,000+">$1,000+</option>
                 </Box>
               </Box>
               <Box>
