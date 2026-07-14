@@ -35,12 +35,12 @@ export function OpenSource() {
             </Text>
             
             <Box 
-              as="a" href="#" target="_blank"
+              as="a" href="https://github.com/abakahjayy" target="_blank"
               display="inline-flex" alignItems="center" gap={2}
               bg="white" color="black" px={8} py={4} borderRadius="xl" fontWeight="700"
               transition="all 0.3s" _hover={{ transform: "translateY(-2px)", boxShadow: "0 10px 20px rgba(255,255,255,0.2)" }}
             >
-              <FiGithub size={20} /> Visit GitHub (@placeholder)
+              <FiGithub size={20} /> Visit GitHub (@abakahjayy)
             </Box>
           </Box>
 

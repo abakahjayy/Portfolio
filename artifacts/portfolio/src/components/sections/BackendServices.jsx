@@ -16,7 +16,9 @@ const platforms = [
       "API Documentation",
       "Role Management",
       "Analytics Dashboard"
-    ]
+    ],
+    liveUrl: "https://fullbackendd.onrender.com",
+    docsUrl: "https://fullbackendd.onrender.com/api-docs"
   },
   {
     icon: FiCpu,
@@ -31,7 +33,9 @@ const platforms = [
       "Authentication",
       "Admin Dashboard",
       "Rate Limiting"
-    ]
+    ],
+    liveUrl: "https://gh-gpt.onrender.com",
+    docsUrl: "https://gh-gpt.onrender.com"
   }
 ];
 
@@ -92,7 +96,7 @@ export function BackendServices() {
 
                 <Flex gap={4}>
                   <Box 
-                    as="a" href="#"
+                    as="a" href={platform.liveUrl} target="_blank" rel="noopener noreferrer"
                     bg="brand.500" color="white" px={6} py={3} borderRadius="lg" fontWeight="600"
                     display="inline-flex" alignItems="center" gap={2} fontSize="sm"
                     _hover={{ bg: "brand.600" }} transition="all 0.2s"
@@ -100,7 +104,7 @@ export function BackendServices() {
                     Live Demo <FiExternalLink />
                   </Box>
                   <Box 
-                    as="a" href="#"
+                    as="a" href={platform.docsUrl} target="_blank" rel="noopener noreferrer"
                     bg="background.dark" color="textBase" border="1px solid" borderColor="borderBase"
                     px={6} py={3} borderRadius="lg" fontWeight="600"
                     display="inline-flex" alignItems="center" gap={2} fontSize="sm"

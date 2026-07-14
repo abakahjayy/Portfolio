@@ -8,21 +8,24 @@ const articles = [
     excerpt: "Learn how to architecture enterprise-ready backend systems capable of handling high traffic with proper abstraction.",
     date: "Oct 12, 2025",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
-    category: "Backend Development"
+    category: "Backend Development",
+    url: "https://docs.nestjs.com/techniques/database"
   },
   {
     title: "Integrating LLMs into React Applications",
     excerpt: "A practical guide to adding OpenAI and OpenRouter capabilities to your frontend seamlessly and securely.",
     date: "Sep 28, 2025",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
-    category: "AI & Frontend"
+    category: "AI & Frontend",
+    url: "https://dev.to/jehnz/integrating-openai-api-with-a-react-application-3378"
   },
   {
     title: "Modern UI Trends: Glassmorphism and Motion",
     excerpt: "How to apply premium design aesthetics to web applications without sacrificing performance or accessibility.",
     date: "Aug 15, 2025",
     image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=800",
-    category: "Design & UX"
+    category: "Design & UX",
+    url: "https://ixdf.org/literature/topics/glassmorphism"
   }
 ];
 
@@ -58,7 +61,8 @@ export function Blog() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
               <Box 
-                as="article" bg="panel" borderRadius="2xl" border="1px solid" borderColor="borderBase" 
+                as="a" href={article.url} target="_blank" rel="noopener noreferrer"
+                display="block" bg="panel" borderRadius="2xl" border="1px solid" borderColor="borderBase" 
                 overflow="hidden" role="group" cursor="pointer"
                 _hover={{ borderColor: "brand.500", transform: "translateY(-5px)" }} transition="all 0.3s"
               >

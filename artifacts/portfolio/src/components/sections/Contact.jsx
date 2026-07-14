@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
 import { apiUrl } from "@/lib/apiUrl";
+import { FaWhatsapp } from "react-icons/fa";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name is required"),
@@ -91,6 +92,25 @@ export function Contact() {
                 <Text as="a" href="tel:+233257445431" fontSize="xl" fontWeight="700" color="textBase" display="block" mt={1} _hover={{ color: "brand.500" }} transition="color 0.2s">
                   +233 25 744 5431
                 </Text>
+              </Box>
+
+              <Box mb={8}>
+                <Text color="textMuted" fontSize="sm" fontWeight="600" textTransform="uppercase" letterSpacing="wider" mb={2}>WhatsApp</Text>
+                <Flex
+                  as="a"
+                  href="https://wa.me/233532900914"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  align="center"
+                  gap={2}
+                  fontSize="xl"
+                  fontWeight="700"
+                  color="textBase"
+                  _hover={{ color: "brand.500" }}
+                  transition="color 0.2s"
+                >
+                  <FaWhatsapp /> Chat on WhatsApp
+                </Flex>
               </Box>
 
               <Box>

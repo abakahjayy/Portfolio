@@ -1,9 +1,10 @@
 import { Box, Container, Flex, Text, Stack, SimpleGrid } from "@chakra-ui/react";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaSnapchatGhost } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const socialLinks = [
-  { icon: FaGithub, href: "#", label: "GitHub" },
+  { icon: FaGithub, href: "https://github.com/abakahjayy", label: "GitHub" },
+  { icon: FaWhatsapp, href: "https://wa.me/233532900914", label: "WhatsApp" },
   { icon: FaLinkedin, href: "#", label: "LinkedIn" },
   { icon: FaTwitter, href: "#", label: "X (Twitter)" },
   { icon: FaInstagram, href: "https://instagram.com/abakah_jay", label: "Instagram" },
