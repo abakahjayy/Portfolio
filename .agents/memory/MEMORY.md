@@ -1,1 +1,2 @@
 - [Chakra UI v3 gotchas](chakra-ui-v3.md) — no `extendTheme`/`useToast`; use `createSystem`/`createToaster` instead. Also verify `react-icons` names exist before importing.
+- [TS-to-JS monorepo conversion](ts-to-js-monorepo-conversion.md) — delete dead shadcn/Radix scaffold code first; Orval only generates TS; drop stale root tsconfig refs.

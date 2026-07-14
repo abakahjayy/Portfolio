@@ -1,8 +1,9 @@
-import { Box, Container, Flex, Heading, Text, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text, SimpleGrid, Image } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FiArrowRight, FiDownload, FiCode } from "react-icons/fi";
 import { FaHandSparkles } from "react-icons/fa";
+import profilePhoto from "../../assets/profile.jpeg";
 
 const titles = [
   "Full Stack Developer",
@@ -134,40 +135,39 @@ export function Hero() {
           </Box>
 
           <Box flex={1} display="flex" justifyContent="center" position="relative" w="full">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <Box position="relative" w={{ base: "300px", md: "450px" }} h={{ base: "300px", md: "450px" }}>
-                {/* Floating elements behind */}
-                <motion.div 
-                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ position: "absolute", top: "10%", right: "10%", width: "80px", height: "80px", background: "linear-gradient(135deg, #0ea5e9, #3b82f6)", borderRadius: "20px", filter: "blur(20px)", opacity: 0.6 }}
+            <Box position="relative" w={{ base: "300px", md: "450px" }} h={{ base: "300px", md: "450px" }}>
+              {/* Floating elements behind */}
+              <motion.div
+                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ position: "absolute", top: "10%", right: "10%", width: "80px", height: "80px", background: "linear-gradient(135deg, #0ea5e9, #3b82f6)", borderRadius: "20px", filter: "blur(20px)", opacity: 0.6 }}
+              />
+              <motion.div
+                animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                style={{ position: "absolute", bottom: "10%", left: "10%", width: "100px", height: "100px", background: "linear-gradient(135deg, #8b5cf6, #d946ef)", borderRadius: "50%", filter: "blur(30px)", opacity: 0.5 }}
+              />
+
+              {/* Profile Photo */}
+              <Box
+                w="full" h="full" bg="panel" borderRadius="3xl" border="1px solid" borderColor="borderBase"
+                backdropFilter="blur(20px)" overflow="hidden" position="relative"
+                boxShadow="0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+              >
+                <Image
+                  src={profilePhoto}
+                  alt="Abakah Joshua Blessed"
+                  w="full"
+                  h="full"
+                  objectFit="cover"
                 />
-                <motion.div 
-                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  style={{ position: "absolute", bottom: "10%", left: "10%", width: "100px", height: "100px", background: "linear-gradient(135deg, #8b5cf6, #d946ef)", borderRadius: "50%", filter: "blur(30px)", opacity: 0.5 }}
+                <Box
+                  position="absolute" inset={0}
+                  bgGradient="linear(to-t, rgba(2,6,23,0.55) 0%, transparent 45%)"
                 />
-                
-                {/* Profile Placeholder */}
-                <Box 
-                  w="full" h="full" bg="panel" borderRadius="3xl" border="1px solid" borderColor="borderBase"
-                  backdropFilter="blur(20px)" overflow="hidden" position="relative"
-                  boxShadow="0 25px 50px -12px rgba(0, 0, 0, 0.5)"
-                >
-                  <Flex w="full" h="full" align="center" justify="center" bg="glass.dark">
-                    <Box textAlign="center">
-                      <FiCode size={64} color="var(--chakra-colors-brand-500)" style={{ margin: "0 auto", opacity: 0.5 }} />
-                      <Text mt={4} color="textMuted" fontFamily="mono" fontSize="sm">&lt;ProfileImage /&gt;</Text>
-                    </Box>
-                  </Flex>
-                  {/* Decorative corner accents */}
-                  <Box position="absolute" top={0} left={0} w="40px" h="40px" borderTop="2px solid" borderLeft="2px solid" borderColor="brand.500" borderTopLeftRadius="3xl" m={4} />
-                  <Box position="absolute" bottom={0} right={0} w="40px" h="40px" borderBottom="2px solid" borderRight="2px solid" borderColor="purple.500" borderBottomRightRadius="3xl" m={4} />
-                </Box>
+                {/* Decorative corner accents */}
+                <Box position="absolute" top={0} left={0} w="40px" h="40px" borderTop="2px solid" borderLeft="2px solid" borderColor="brand.500" borderTopLeftRadius="3xl" m={4} />
+                <Box position="absolute" bottom={0} right={0} w="40px" h="40px" borderBottom="2px solid" borderRight="2px solid" borderColor="purple.500" borderBottomRightRadius="3xl" m={4} />
               </Box>
-            </motion.div>
+            </Box>
           </Box>
 
         </Flex>

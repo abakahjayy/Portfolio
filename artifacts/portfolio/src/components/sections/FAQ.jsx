@@ -1,9 +1,5 @@
-import { Box, Container, Heading, Text, Flex } from "@chakra-ui/react";
+import { Box, Container, Heading, Text, Accordion } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { Accordion } from "@radix-ui/react-accordion";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { FiChevronDown } from "react-icons/fi";
-import React from "react";
 
 const faqs = [
   { q: "What determines the final pricing of a project?", a: "Pricing is based on project complexity, number of pages, required features (like e-commerce, AI integrations, or custom backends), and the estimated timeline. The packages above serve as starting points." },
@@ -32,27 +28,45 @@ export function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion.Root collapsible variant="enclosed" defaultValue={[]}>
             {faqs.map((faq, idx) => (
-              <AccordionPrimitive.Item 
-                key={idx} 
+              <Accordion.Item
+                key={idx}
                 value={`item-${idx}`}
-                className="border border-[var(--chakra-colors-borderBase)] bg-[var(--chakra-colors-panel)] mb-4 rounded-xl overflow-hidden"
+                border="1px solid"
+                borderColor="borderBase"
+                bg="panel"
+                mb={4}
+                borderRadius="xl"
+                overflow="hidden"
               >
-                <AccordionPrimitive.Header className="flex">
-                  <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-5 px-6 font-heading font-bold text-lg text-left transition-all hover:text-[var(--chakra-colors-brand-500)] [&[data-state=open]>svg]:rotate-180">
+                <Accordion.ItemTrigger
+                  py={5}
+                  px={6}
+                  fontFamily="heading"
+                  fontWeight="bold"
+                  fontSize="lg"
+                  _hover={{ color: "brand.500" }}
+                >
+                  <Box flex="1" textAlign="left">
                     {faq.q}
-                    <FiChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                  </AccordionPrimitive.Trigger>
-                </AccordionPrimitive.Header>
-                <AccordionPrimitive.Content className="overflow-hidden text-[var(--chakra-colors-textMuted)] text-base data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <Box px={6} pb={5} pt={0} lineHeight="1.6">
-                    {faq.a}
                   </Box>
-                </AccordionPrimitive.Content>
-              </AccordionPrimitive.Item>
+                  <Accordion.ItemIndicator />
+                </Accordion.ItemTrigger>
+                <Accordion.ItemContent>
+                  <Accordion.ItemBody
+                    px={6}
+                    pb={5}
+                    pt={0}
+                    lineHeight="1.6"
+                    color="textMuted"
+                  >
+                    {faq.a}
+                  </Accordion.ItemBody>
+                </Accordion.ItemContent>
+              </Accordion.Item>
             ))}
-          </Accordion>
+          </Accordion.Root>
         </motion.div>
       </Container>
     </Box>
