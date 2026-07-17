@@ -1,0 +1,191 @@
+From fa8f0d8086d6a9fd3c870696ee90ba3c861a4360 Mon Sep 17 00:00:00 2001
+From: Claude <assistant@example.com>
+Date: Tue, 14 Jul 2026 07:24:32 +0000
+Subject: [PATCH 3/3] Fill in real links: WhatsApp, GitHub, blog articles,
+ backend demos
+
+- Footer: add WhatsApp icon (wa.me/233532900914), fix GitHub placeholder
+  link to https://github.com/abakahjayy
+- Contact.jsx: add a WhatsApp direct-chat block next to phone/email
+- OpenSource.jsx: fix GitHub CTA to real profile
+- Blog.jsx: each 'Read Article' card now links to a real, live article
+  matching its topic (NestJS+Postgres docs, OpenAI+React guide,
+  glassmorphism/motion design piece); whole card is now a real <a>
+- BackendServices.jsx: wire Live Demo/Documentation buttons to the
+  actual Render deployments (fullbackendd.onrender.com with its
+  /api-docs Swagger page, and gh-gpt.onrender.com) instead of '#'
+
+Still open: LinkedIn, X/Twitter, and Facebook URLs (placeholders left
+as '#' since I don't have real handles), and a destination for the
+Blog 'View All Posts' link if one exists.
+---
+ .../src/components/layout/Footer.jsx          |  5 +++--
+ .../components/sections/BackendServices.jsx   | 12 +++++++----
+ .../src/components/sections/Blog.jsx          | 12 +++++++----
+ .../src/components/sections/Contact.jsx       | 20 +++++++++++++++++++
+ .../src/components/sections/OpenSource.jsx    |  4 ++--
+ 5 files changed, 41 insertions(+), 12 deletions(-)
+
+diff --git a/artifacts/portfolio/src/components/layout/Footer.jsx b/artifacts/portfolio/src/components/layout/Footer.jsx
+index 5ef186d..7ca66fa 100644
+--- a/artifacts/portfolio/src/components/layout/Footer.jsx
++++ b/artifacts/portfolio/src/components/layout/Footer.jsx
+@@ -1,9 +1,10 @@
+ import { Box, Container, Flex, Text, Stack, SimpleGrid } from "@chakra-ui/react";
+-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaSnapchatGhost } from "react-icons/fa";
++import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
+ import { motion } from "framer-motion";
+ 
+ const socialLinks = [
+-  { icon: FaGithub, href: "#", label: "GitHub" },
++  { icon: FaGithub, href: "https://github.com/abakahjayy", label: "GitHub" },
++  { icon: FaWhatsapp, href: "https://wa.me/233532900914", label: "WhatsApp" },
+   { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+   { icon: FaTwitter, href: "#", label: "X (Twitter)" },
+   { icon: FaInstagram, href: "https://instagram.com/abakah_jay", label: "Instagram" },
+diff --git a/artifacts/portfolio/src/components/sections/BackendServices.jsx b/artifacts/portfolio/src/components/sections/BackendServices.jsx
+index 2d786f0..f7a201d 100644
+--- a/artifacts/portfolio/src/components/sections/BackendServices.jsx
++++ b/artifacts/portfolio/src/components/sections/BackendServices.jsx
+@@ -16,7 +16,9 @@ const platforms = [
+       "API Documentation",
+       "Role Management",
+       "Analytics Dashboard"
+-    ]
++    ],
++    liveUrl: "https://fullbackendd.onrender.com",
++    docsUrl: "https://fullbackendd.onrender.com/api-docs"
+   },
+   {
+     icon: FiCpu,
+@@ -31,7 +33,9 @@ const platforms = [
+       "Authentication",
+       "Admin Dashboard",
+       "Rate Limiting"
+-    ]
++    ],
++    liveUrl: "https://gh-gpt.onrender.com",
++    docsUrl: "https://gh-gpt.onrender.com"
+   }
+ ];
+ 
+@@ -92,7 +96,7 @@ export function BackendServices() {
+ 
+                 <Flex gap={4}>
+                   <Box 
+-                    as="a" href="#"
++                    as="a" href={platform.liveUrl} target="_blank" rel="noopener noreferrer"
+                     bg="brand.500" color="white" px={6} py={3} borderRadius="lg" fontWeight="600"
+                     display="inline-flex" alignItems="center" gap={2} fontSize="sm"
+                     _hover={{ bg: "brand.600" }} transition="all 0.2s"
+@@ -100,7 +104,7 @@ export function BackendServices() {
+                     Live Demo <FiExternalLink />
+                   </Box>
+                   <Box 
+-                    as="a" href="#"
++                    as="a" href={platform.docsUrl} target="_blank" rel="noopener noreferrer"
+                     bg="background.dark" color="textBase" border="1px solid" borderColor="borderBase"
+                     px={6} py={3} borderRadius="lg" fontWeight="600"
+                     display="inline-flex" alignItems="center" gap={2} fontSize="sm"
+diff --git a/artifacts/portfolio/src/components/sections/Blog.jsx b/artifacts/portfolio/src/components/sections/Blog.jsx
+index 36c89d0..754c7c1 100644
+--- a/artifacts/portfolio/src/components/sections/Blog.jsx
++++ b/artifacts/portfolio/src/components/sections/Blog.jsx
+@@ -8,21 +8,24 @@ const articles = [
+     excerpt: "Learn how to architecture enterprise-ready backend systems capable of handling high traffic with proper abstraction.",
+     date: "Oct 12, 2025",
+     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+-    category: "Backend Development"
++    category: "Backend Development",
++    url: "https://docs.nestjs.com/techniques/database"
+   },
+   {
+     title: "Integrating LLMs into React Applications",
+     excerpt: "A practical guide to adding OpenAI and OpenRouter capabilities to your frontend seamlessly and securely.",
+     date: "Sep 28, 2025",
+     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
+-    category: "AI & Frontend"
++    category: "AI & Frontend",
++    url: "https://dev.to/jehnz/integrating-openai-api-with-a-react-application-3378"
+   },
+   {
+     title: "Modern UI Trends: Glassmorphism and Motion",
+     excerpt: "How to apply premium design aesthetics to web applications without sacrificing performance or accessibility.",
+     date: "Aug 15, 2025",
+     image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=800",
+-    category: "Design & UX"
++    category: "Design & UX",
++    url: "https://ixdf.org/literature/topics/glassmorphism"
+   }
+ ];
+ 
+@@ -58,7 +61,8 @@ export function Blog() {
+               transition={{ duration: 0.5, delay: idx * 0.1 }}
+             >
+               <Box 
+-                as="article" bg="panel" borderRadius="2xl" border="1px solid" borderColor="borderBase" 
++                as="a" href={article.url} target="_blank" rel="noopener noreferrer"
++                display="block" bg="panel" borderRadius="2xl" border="1px solid" borderColor="borderBase" 
+                 overflow="hidden" role="group" cursor="pointer"
+                 _hover={{ borderColor: "brand.500", transform: "translateY(-5px)" }} transition="all 0.3s"
+               >
+diff --git a/artifacts/portfolio/src/components/sections/Contact.jsx b/artifacts/portfolio/src/components/sections/Contact.jsx
+index 7d73bde..c5d0173 100644
+--- a/artifacts/portfolio/src/components/sections/Contact.jsx
++++ b/artifacts/portfolio/src/components/sections/Contact.jsx
+@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
+ import * as z from "zod";
+ import { useState } from "react";
+ import { apiUrl } from "@/lib/apiUrl";
++import { FaWhatsapp } from "react-icons/fa";
+ 
+ const formSchema = z.object({
+   fullName: z.string().min(2, "Name is required"),
+@@ -93,6 +94,25 @@ export function Contact() {
+                 </Text>
+               </Box>
+ 
++              <Box mb={8}>
++                <Text color="textMuted" fontSize="sm" fontWeight="600" textTransform="uppercase" letterSpacing="wider" mb={2}>WhatsApp</Text>
++                <Flex
++                  as="a"
++                  href="https://wa.me/233532900914"
++                  target="_blank"
++                  rel="noopener noreferrer"
++                  align="center"
++                  gap={2}
++                  fontSize="xl"
++                  fontWeight="700"
++                  color="textBase"
++                  _hover={{ color: "brand.500" }}
++                  transition="color 0.2s"
++                >
++                  <FaWhatsapp /> Chat on WhatsApp
++                </Flex>
++              </Box>
++
+               <Box>
+                 <Text color="textMuted" fontSize="sm" fontWeight="600" textTransform="uppercase" letterSpacing="wider" mb={2}>Location</Text>
+                 <Text fontSize="xl" fontWeight="700" color="textBase">
+diff --git a/artifacts/portfolio/src/components/sections/OpenSource.jsx b/artifacts/portfolio/src/components/sections/OpenSource.jsx
+index 1dd7bd7..25c1181 100644
+--- a/artifacts/portfolio/src/components/sections/OpenSource.jsx
++++ b/artifacts/portfolio/src/components/sections/OpenSource.jsx
+@@ -35,12 +35,12 @@ export function OpenSource() {
+             </Text>
+             
+             <Box 
+-              as="a" href="#" target="_blank"
++              as="a" href="https://github.com/abakahjayy" target="_blank"
+               display="inline-flex" alignItems="center" gap={2}
+               bg="white" color="black" px={8} py={4} borderRadius="xl" fontWeight="700"
+               transition="all 0.3s" _hover={{ transform: "translateY(-2px)", boxShadow: "0 10px 20px rgba(255,255,255,0.2)" }}
+             >
+-              <FiGithub size={20} /> Visit GitHub (@placeholder)
++              <FiGithub size={20} /> Visit GitHub (@abakahjayy)
+             </Box>
+           </Box>
+ 
+-- 
+2.43.0
+

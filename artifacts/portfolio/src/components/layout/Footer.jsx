@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 const socialLinks = [
   { icon: FaGithub, href: "https://github.com/abakahjayy", label: "GitHub" },
   { icon: FaWhatsapp, href: "https://wa.me/233532900914", label: "WhatsApp" },
-  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-  { icon: FaTwitter, href: "#", label: "X (Twitter)" },
+  // { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+  // { icon: FaTwitter, href: "#", label: "X (Twitter)" },
   { icon: FaInstagram, href: "https://instagram.com/abakah_jay", label: "Instagram" },
   { icon: FaTiktok, href: "https://tiktok.com/@abakah_jay", label: "TikTok" },
   { icon: FaSnapchatGhost, href: "https://snapchat.com/add/abakah_jay", label: "Snapchat" },
-  { icon: FaFacebook, href: "#", label: "Facebook" },
+  // { icon: FaFacebook, href: "#", label: "Facebook" },
 ];
 
 export function Footer() {
