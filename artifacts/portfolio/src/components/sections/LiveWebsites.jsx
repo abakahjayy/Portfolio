@@ -4,6 +4,12 @@ import { FiExternalLink } from "react-icons/fi";
 
 const websites = [
   {
+    title: "CleanBridge GH",
+    description: "Waste-collection app for Ghana: book pickups, pay with MoMo, and track your collector live on the map.",
+    image: "https://cleanbridge-gh.onrender.com/screenshots/wide-home.png",
+    url: "https://cleanbridge-gh.onrender.com"
+  },
+  {
     title: "SeedBridge",
     description: "AI-powered agricultural marketplace connecting farmers directly to buyers.",
     image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=600",
