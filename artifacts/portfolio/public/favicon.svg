@@ -1,3 +1,17 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Joshua.Dev "J.D" monogram, matching the site's loader: brand blue #0ea5e9 to purple #8b5cf6 on navy -->
+  <defs>
+    <linearGradient id="jd" x1="8" y1="12" x2="56" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#0ea5e9"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0b1220"/>
+  <!-- J -->
+  <path d="M23 15 V38 a9 9 0 0 1 -15.5 6.2" stroke="url(#jd)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- . -->
+  <circle cx="30" cy="46" r="3.6" fill="#8b5cf6"/>
+  <!-- D -->
+  <path d="M38 15 V49 H41 a17 17 0 0 0 0 -34 Z" stroke="url(#jd)" stroke-width="7" stroke-linejoin="round"/>
 </svg>
