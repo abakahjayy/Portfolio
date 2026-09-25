@@ -4,6 +4,14 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 const projects = [
   {
+    title: "CleanBridge GH",
+    description: "Waste-collection app for Ghana: customers book pickups, pay with MoMo and track their collector live on the map; collectors get routes, jobs and payouts, with an admin dashboard, email updates and an installable Android app.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Paystack", "Leaflet"],
+    image: "https://cleanbridge-gh.onrender.com/screenshots/wide-home.png",
+    liveUrl: "https://cleanbridge-gh.onrender.com",
+    githubUrl: "https://github.com/abakahjayy/CleanBridge-GH"
+  },
+  {
     title: "SeedBridge",
     description: "AI-powered Farmer-to-Buyer agricultural marketplace facilitating direct trade, price prediction, and supply chain visibility for farmers and buyers.",
     tech: ["React", "Node.js", "MongoDB", "Express", "AI"],
@@ -21,11 +29,11 @@ const projects = [
   },
   {
     title: "Instagram Clone",
-    description: "Full-featured social media clone replicating core Instagram functionality — feeds, posts, likes, and profiles — built end-to-end with React.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
+    description: "Full-featured Instagram clone: feed, stories, reels and video posts, likes and comments, real-time DMs with voice notes, notifications, and installable Android/Windows apps.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Socket.IO"],
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800",
-    liveUrl: "https://react-products-hcld.onrender.com",
-    githubUrl: "#"
+    liveUrl: "https://instagrammmm-z34p.onrender.com",
+    githubUrl: "https://github.com/abakahjayy/Instagram"
   },
   {
     title: "Universal Backend Service",

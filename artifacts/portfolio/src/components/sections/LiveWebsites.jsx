@@ -23,9 +23,9 @@ const websites = [
   },
   {
     title: "Instagram Clone",
-    description: "Full-featured social media clone with feeds, posts, and profiles.",
+    description: "Instagram clone with stories, reels, real-time DMs with voice notes, and downloadable apps.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=600",
-    url: "https://react-products-hcld.onrender.com"
+    url: "https://instagrammmm-z34p.onrender.com"
   },
   {
     title: "Universal Backend Service",
